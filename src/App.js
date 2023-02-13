@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import JobsList from './components/JobsList';
+import FilterJobs from './components/FilterJobs';
 
 function App() {
+      const [searchText , setSearchText] = useState('');
+      const [showOnlyFeaturedJobs , setShowOnlyFeaturedJobs] = useState(false);
+      const [showOnlyRemoteJobs , setShowOnlyRemoteJobs] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <FilterJobs 
+       searchText={searchText} 
+       setSearchText={setSearchText}
+       showOnlyFeaturedJobs={showOnlyFeaturedJobs}
+       setShowOnlyFeaturedJobs={setShowOnlyFeaturedJobs}
+       showOnlyRemoteJobs={showOnlyRemoteJobs}
+       setShowOnlyRemoteJobs={setShowOnlyRemoteJobs}  />
+        <JobsList searchText={searchText}
+         showOnlyFeaturedJobs={showOnlyFeaturedJobs}
+         showOnlyRemoteJobs={showOnlyRemoteJobs}/>
+  
     </div>
   );
 }
